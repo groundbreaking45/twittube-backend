@@ -1,0 +1,16 @@
+{
+  "name": "megaproject",
+  "version": "1.0.0",
+  "description": "a Backend Project",
+  "keywords": [
+    "Backend",
+    "JavaScript"
+  ],
+  "license": "ISC",
+  "author": "Deepak Sharma",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
