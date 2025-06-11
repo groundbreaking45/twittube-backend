@@ -1,12 +1,22 @@
 import connectDatabase from "./db/index.js";
 import dotenv from "dotenv";
+import { app } from "./app.js";
 
 dotenv.config({
     path : './.env',
 })
 
 
-connectDatabase();
+const port = process.env.PORT || 6000
+
+
+connectDatabase().then(() => {
+    app.listen(port, () => {
+        console.log(`⚙️ Your app is running on port ${port}`)
+    })
+}).catch((error) => {
+    console.log(`❎ DB could not be connected .... ${error.message}`);
+})
 
 
 
