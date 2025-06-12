@@ -7,9 +7,9 @@ import jwt from "jsonwebtoken";
 
 
 const userSchema = new mongoose.Schema({
-    username: {
+    userName: {
         type: String,
-        required: [true, "username is required"],
+        required: [true, "userName is required"],
         unique: true,
         lowercase: true,
         trim: true,
@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
 
     email: {
         type: String,
-        required: [true, "username is required"],
+        required: [true, "userName is required"],
         unique: true,
         lowercase: true,
         trim: true,
@@ -74,7 +74,7 @@ userSchema.methods.isPasswordCorrecr = async function (password) {
 userSchema.methods.genratingAccessToken = async function () {
     jwt.sign({
         _id: this._id,
-        username: this.username,
+        userName: this.userName,
     },
         process.env.ACCESS_TOKEN_SECRET,
         {
@@ -89,7 +89,7 @@ userSchema.methods.genratingAccessToken = async function () {
 userSchema.methods.genratingRefreshToken = async function () {
     jwt.sign({
         _id: this._id,
-        username: this.username,
+        userName: this.userName,
     },
         process.env.REFRESH_TOKEN_SECRET,
         {
