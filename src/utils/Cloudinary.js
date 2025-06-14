@@ -1,5 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
 import fs from 'fs';
+import { ApiError } from "./ApiError.js";
 
 
 cloudinary.config({
@@ -35,4 +36,27 @@ const uploadOnCloudinary = async (localFilePath) => {
 }
 
 
-export {uploadOnCloudinary};
+const publicIdGenerator = (url) => {
+      const parts = url.split('/');
+      console.log(typeof parts)
+      const publicIdwithExt = parts.slice(7).join('/');
+      const publicId = publicIdwithExt.split('.').slice(0,-1).join('.');
+      return publicId;
+}
+
+
+
+const deleteCloudinaryFile  = async (cloudinaryURL) => {
+
+    const public_ID = publicIdGenerator(cloudinaryURL);
+
+    try {
+        await cloudinary.uploader.destroy(public_ID);
+    } catch (error) {
+        throw new ApiError(569, "something went wrong while deleting old file")
+    }
+
+}
+
+
+export {uploadOnCloudinary, deleteCloudinaryFile};
