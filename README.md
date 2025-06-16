@@ -57,7 +57,7 @@ npm install
 Create a `.env` file using the provided `.env.example` as a guide:
 
 ```env
-PORT=5000
+PORT=8000
 MONGODB_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
 CLOUDINARY_NAME=your_cloud_name
@@ -71,7 +71,7 @@ CLOUDINARY_API_SECRET=your_api_secret
 npm run dev
 ```
 
-The server will run at `http://localhost:5000`.
+The server will run at `http://localhost:8000`.
 
 ---
 
